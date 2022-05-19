@@ -1,27 +1,41 @@
 let myLibrary = [];
 
 let titleInput = document.querySelector("#book");
+let authorInput = document.querySelector("#author");
+let pagesInput = document.querySelector("#pages");
 let addBookButton = document.querySelector(".add-book-button");
 
 
-function Book(title){
-    return this.title = title;
+function Book(title,author,pages){
+    this.title = title
+    this.author = author
+    this.pages = pages
 }
 
 let bookContainer = document.querySelector(".books");
 
 let addBookToContainer = () =>{
     let bookCard = document.createElement("div");
+    let bookCardH2 = document.createElement("h2");
+    let bookCardH3 = document.createElement("h3");
+    let bookCardP = document.createElement("p");
     for(let i =0; i<myLibrary.length; i++){
-        bookCard.textContent = myLibrary[i];
+        bookCardH2.textContent = myLibrary[i].book.title;
+        bookCardH3.textContent = myLibrary[i].book.author;
+        bookCardP.textContent = myLibrary[i].book.pages;
         bookContainer.appendChild(bookCard)
+        bookCard.appendChild(bookCardH2)
+        bookCard.appendChild(bookCardH3)
+        bookCard.appendChild(bookCardP)
     }
 }
 
 let addBookToLibrary = (e) =>{
-    let newBook = Book(titleInput.value);
-    myLibrary.push(newBook)
-    addBookToContainer(newBook)
+    let book = new Book(titleInput.value,authorInput.value,pagesInput.value);
+    myLibrary.push({book})
+    addBookToContainer(book)
+    console.log(book)
+    console.log(myLibrary)
 }
 
 addBookButton.addEventListener("mouseup",addBookToLibrary)
