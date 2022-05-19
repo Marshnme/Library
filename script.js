@@ -1,18 +1,19 @@
-let myLibrary = []
+let myLibrary = [];
 
-let input = document.querySelector("#book")
-let addBookButton = document.querySelector(".add-book-button")
+let titleInput = document.querySelector("#book");
+let addBookButton = document.querySelector(".add-book-button");
 
 
-function Book(name){
-    this.name = name;
+function Book(title){
+    return this.title = title;
 }
 
 let bookContainer = document.querySelector(".books");
 
 let addBookToLibrary = (e) =>{
-    
-    console.log(input.value)
+    let newBook = Book(titleInput.value);
+    myLibrary.push(newBook)
+    console.log(myLibrary)
 }
 
 
