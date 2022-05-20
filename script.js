@@ -1,6 +1,6 @@
 let myLibrary = [];
 
-let titleInput = document.querySelector("#book");
+let titleInput = document.querySelector("#title");
 let authorInput = document.querySelector("#author");
 let pagesInput = document.querySelector("#pages");
 let addBookButton = document.querySelector(".add-book-button");
@@ -19,6 +19,7 @@ let addBookToContainer = () =>{
     let bookCardH2 = document.createElement("h2");
     let bookCardH3 = document.createElement("h3");
     let bookCardP = document.createElement("p");
+
     for(let i =0; i<myLibrary.length; i++){
         bookCardH2.textContent = myLibrary[i].book.title;
         bookCardH3.textContent = myLibrary[i].book.author;
@@ -34,8 +35,6 @@ let addBookToLibrary = (e) =>{
     let book = new Book(titleInput.value,authorInput.value,pagesInput.value);
     myLibrary.push({book})
     addBookToContainer(book)
-    console.log(book)
-    console.log(myLibrary)
 }
 
 addBookButton.addEventListener("mouseup",addBookToLibrary)
