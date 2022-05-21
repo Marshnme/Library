@@ -1,3 +1,7 @@
+.container{
+    /* position:absolute; */
+}
+
 .hidden-book-form{
     display: none;
 }
@@ -10,7 +14,8 @@ form{
     display:flex;
     justify-content: center;
     align-items: center;
-
+    position:absolute;
+    left:45%;
 }
 
 .input{
@@ -19,9 +24,18 @@ form{
 
     /* justify-content: center; */
     align-items: center;
-    gap:15px;
+    gap:5px;
+}
+
+.input input{
+    margin-bottom:15px;
 }
 
 .underline{
     border-bottom: 1px solid black;
+}
+
+.books{
+    display:flex;
+    flex-flow: row wrap;
 }
