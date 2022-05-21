@@ -1,0 +1,7 @@
+.hidden-book-form{
+    visibility: hidden;
+}
+
+.visible-book-form{
+    visibility: visible;
+}

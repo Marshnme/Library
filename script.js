@@ -4,11 +4,22 @@ let titleInput = document.querySelector("#title");
 let authorInput = document.querySelector("#author");
 let pagesInput = document.querySelector("#pages");
 let addBookButton = document.querySelector(".add-book-button");
+let newBookButton = document.querySelector(".new-book");
+let addBookForm = document.querySelector(".hidden-book-form");
 
+newBookButton.addEventListener("mouseup",displayForm);
+
+function displayForm(){
+    const styles = window.getComputedStyle(addBookForm)
+    
+    if(styles.visibility === "hidden"){
+        addBookForm.classList.remove("hidden-book-form")
+    }else{
+        addBookForm.classList.add("hidden-book-form")
+    }
+}
 
 function Book(title,author,pages){
-    
-
     this.title = title
     this.author = author
     this.pages = pages
