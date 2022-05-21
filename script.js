@@ -5,14 +5,14 @@ let authorInput = document.querySelector("#author");
 let pagesInput = document.querySelector("#pages");
 let addBookButton = document.querySelector(".add-book-button");
 let newBookButton = document.querySelector(".new-book");
-let addBookForm = document.querySelector(".hidden-book-form");
+let addBookForm = document.querySelector(".add-book-form");
 
 newBookButton.addEventListener("mouseup",displayForm);
 
 function displayForm(){
     const styles = window.getComputedStyle(addBookForm)
     
-    if(styles.visibility === "hidden"){
+    if(styles.display === "none"){
         addBookForm.classList.remove("hidden-book-form")
     }else{
         addBookForm.classList.add("hidden-book-form")
@@ -59,6 +59,7 @@ let addBooksToContainer = (book) =>{
 }
 let num = 0;
 let addBookToLibrary = (e) =>{
+    e.preventDefault()
     let book = new Book(titleInput.value,authorInput.value,pagesInput.value);
     myLibrary = [...myLibrary,({book})]
     book.id = num;
@@ -82,4 +83,4 @@ let removeBook = (e) => {
     }
 }
 
-addBookButton.addEventListener("mouseup",addBookToLibrary)
+addBookForm.addEventListener("submit",addBookToLibrary)

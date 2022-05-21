@@ -1,7 +1,27 @@
 .hidden-book-form{
-    visibility: hidden;
+    display: none;
 }
 
 .visible-book-form{
-    visibility: visible;
+    display:inherit;
+}
+
+form{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.input{
+    display:flex;
+    flex-flow: column nowrap;
+
+    /* justify-content: center; */
+    align-items: center;
+    gap:15px;
+}
+
+.underline{
+    border-bottom: 1px solid black;
 }
