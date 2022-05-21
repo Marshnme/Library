@@ -6,9 +6,10 @@ let pagesInput = document.querySelector("#pages");
 let addBookButton = document.querySelector(".add-book-button");
 let newBookButton = document.querySelector(".new-book");
 let addBookForm = document.querySelector(".add-book-form");
+let exitFormButton = document.querySelector(".x")
 
 newBookButton.addEventListener("mouseup",displayForm);
-
+exitFormButton.addEventListener("mouseup",displayForm);
 function displayForm(){
     const styles = window.getComputedStyle(addBookForm)
     

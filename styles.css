@@ -16,13 +16,14 @@ form{
     align-items: center;
     position:absolute;
     left:45%;
+    z-index: 5;
 }
 
 .input{
     display:flex;
     flex-flow: column nowrap;
 
-    /* justify-content: center; */
+    justify-content: center;
     align-items: center;
     gap:5px;
 }
@@ -30,6 +31,23 @@ form{
 .input input{
     margin-bottom:15px;
 }
+
+.title-x{
+    width:100%;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.title{
+    grid-area: 1/2/1/2;
+    text-align: center;
+}
+
+.x{
+    grid-area: 1/3/1/4;
+    text-align: end;
+}
+
 
 .underline{
     border-bottom: 1px solid black;
