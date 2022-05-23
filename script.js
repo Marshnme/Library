@@ -31,13 +31,23 @@ function Book(title,author,pages,read){
 }
 
 Book.prototype.changeReadStatus = function() {
-    if(this.read === true){
-        this.read = false;
-        console.log(myLibrary)
-    }else{
-        this.read = true;
-        console.log(myLibrary)
+    
+    let readEleToggle = this.querySelector(".read-toggle")
+    for(let i = 0; i < myLibrary.length; i++){
+        if(this.dataset.attribute == myLibrary[i].book.id){
+            if(myLibrary[i].book.read == true){
+                myLibrary[i].book.read = false;
+                readEleToggle.textContent = "You have not read this book!";
+            }else{
+                myLibrary[i].book.read = true;
+                readEleToggle.textContent = "You have read this book!";
+            }
+        }else{
+            console.log("nomatch")
+        }
     }
+    console.log(myLibrary)
+    console.log(this)
 }
 
 let bookContainer = document.querySelector(".books");
@@ -53,7 +63,7 @@ let addBooksToContainer = (book) =>{
 
         removeButton.addEventListener("mouseup",removeBook)
 
-        bookCard.addEventListener("mouseup",book.changeReadStatus)
+        
         
     for(let i = 0; i<myLibrary.length; i++){
         
@@ -61,6 +71,7 @@ let addBooksToContainer = (book) =>{
 
         bookCardH2.textContent = myLibrary[i].book.title;
         bookCardH3.textContent = myLibrary[i].book.author;
+        bookCardRead.classList.add("read-toggle")
         if(book.read === true){
             bookCardRead.textContent = "You have read this book!"
         }else{
@@ -79,6 +90,8 @@ let addBooksToContainer = (book) =>{
         bookCard.dataset.attribute = book.id
 
     }
+    console.log(book)
+    bookCard.addEventListener("mouseup", book.changeReadStatus)
     
 }
 let num = 0;
