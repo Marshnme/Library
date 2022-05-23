@@ -33,14 +33,15 @@ function Book(title,author,pages,read){
 Book.prototype.changeReadStatus = function() {
     
     let readEleToggle = this.querySelector(".read-toggle")
+    console.log(this.parentElement)
     for(let i = 0; i < myLibrary.length; i++){
-        if(this.dataset.attribute == myLibrary[i].book.id){
+        if(this.parentElement.dataset.attribute == myLibrary[i].book.id){
             if(myLibrary[i].book.read == true){
                 myLibrary[i].book.read = false;
-                readEleToggle.textContent = "You have not read this book!";
+                this.textContent = "You have not read this book!";
             }else{
                 myLibrary[i].book.read = true;
-                readEleToggle.textContent = "You have read this book!";
+                this.textContent = "You have read this book!";
             }
         }else{
             console.log("nomatch")
@@ -91,7 +92,7 @@ let addBooksToContainer = (book) =>{
 
     }
     console.log(book)
-    bookCard.addEventListener("mouseup", book.changeReadStatus)
+    bookCardRead.addEventListener("mouseup", book.changeReadStatus)
     
 }
 let num = 0;
