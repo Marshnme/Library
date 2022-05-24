@@ -11,13 +11,17 @@ let exitFormButton = document.querySelector(".x")
 
 newBookButton.addEventListener("mouseup",displayForm);
 exitFormButton.addEventListener("mouseup",displayForm);
-
+addBookButton.addEventListener("mouseup",displayForm);
 
 function displayForm(){
     const styles = window.getComputedStyle(addBookForm)
     
     if(styles.display === "none"){
         addBookForm.classList.remove("hidden-book-form")
+        titleInput.value = "";
+        authorInput.value = "";
+        pagesInput.value = "";
+        readInput.checked = false;
     }else{
         addBookForm.classList.add("hidden-book-form")
     }
@@ -93,7 +97,6 @@ let addBooksToContainer = (book) =>{
     }
     console.log(book)
     bookCardRead.addEventListener("mouseup", book.changeReadStatus)
-    
 }
 let num = 0;
 let addBookToLibrary = (e) =>{
