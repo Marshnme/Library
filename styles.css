@@ -1,6 +1,12 @@
-.container{
-    /* position:absolute; */
+
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:25px;
 }
+
 
 .hidden-book-form{
     display: none;
@@ -10,13 +16,16 @@
     display:inherit;
 }
 
-form{
-    display:flex;
+section{
+    display: flex;
     justify-content: center;
     align-items: center;
-    position:absolute;
-    left:45%;
-    z-index: 5;
+}
+
+form{
+    position: absolute;
+    top:30%;
+    
 }
 
 .input{
