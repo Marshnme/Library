@@ -1,5 +1,7 @@
 let myLibrary = [];
 
+
+let mainElement = document.querySelector("main")
 let titleInput = document.querySelector("#title");
 let authorInput = document.querySelector("#author");
 let pagesInput = document.querySelector("#pages");
@@ -18,12 +20,14 @@ function displayForm(){
     
     if(styles.display === "none"){
         addBookForm.classList.remove("hidden-book-form")
+        mainElement.classList.add("blur-style")
         titleInput.value = "";
         authorInput.value = "";
         pagesInput.value = "";
         readInput.checked = false;
     }else{
         addBookForm.classList.add("hidden-book-form")
+        mainElement.classList.remove("blur-style")
     }
 }
 
@@ -66,8 +70,8 @@ let addBooksToContainer = (book) =>{
         
         
     for(let i = 0; i<myLibrary.length; i++){
-        bookCardH2.textContent = myLibrary[i].book.title;
-        bookCardH3.textContent = myLibrary[i].book.author;
+        bookCardH2.textContent = `Title: ${myLibrary[i].book.title}`;
+        bookCardH3.textContent = `Author: ${myLibrary[i].book.author}`;
         bookCardRead.classList.add("read-toggle")
         if(book.read === true){
             bookCardRead.textContent = "You have read this book!"
@@ -75,7 +79,7 @@ let addBooksToContainer = (book) =>{
             bookCardRead.textContent = "You have not read this book!"
         }
         
-        bookCardP.textContent = myLibrary[i].book.pages;
+        bookCardP.textContent = `Pages: ${myLibrary[i].book.pages}`;
         removeButton.textContent = "Remove Book?";
         bookContainer.appendChild(bookCard)
         bookCard.appendChild(bookCardH2)
