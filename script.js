@@ -11,7 +11,7 @@ let exitFormButton = document.querySelector(".x")
 
 newBookButton.addEventListener("mouseup",displayForm);
 exitFormButton.addEventListener("mouseup",displayForm);
-addBookButton.addEventListener("mouseup",displayForm);
+addBookForm.addEventListener("submit",displayForm);
 
 function displayForm(){
     const styles = window.getComputedStyle(addBookForm)
@@ -88,6 +88,8 @@ let addBooksToContainer = (book) =>{
 
     }
     bookCardRead.addEventListener("mouseup", book.changeReadStatus)
+    
+    
 }
 let num = 0;
 let addBookToLibrary = (e) =>{
