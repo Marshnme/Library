@@ -31,15 +31,15 @@ function displayForm(){
     }
 }
 
-function Book(title,author,pages,read){
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.read = read
-}
-
-Book.prototype.changeReadStatus = function() {
-    for(let i = 0; i < myLibrary.length; i++){
+class Book {
+    constructor(title,author,pages,read){
+        this.title = title
+        this.author = author
+        this.pages = pages
+        this.read = read
+    }
+    changeReadStatus(){
+        for(let i = 0; i < myLibrary.length; i++){
         if(this.parentElement.dataset.attribute == myLibrary[i].book.id){
             if(myLibrary[i].book.read == true){
                 myLibrary[i].book.read = false;
@@ -51,6 +51,7 @@ Book.prototype.changeReadStatus = function() {
         }else{
             console.log("nomatch")
         }
+    }
     }
 }
 
