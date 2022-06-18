@@ -13,7 +13,7 @@ let exitFormButton = document.querySelector(".x")
 
 newBookButton.addEventListener("mouseup",displayForm);
 exitFormButton.addEventListener("mouseup",displayForm);
-addBookForm.addEventListener("submit",displayForm);
+
 
 function displayForm(){
     const styles = window.getComputedStyle(addBookForm)
@@ -21,9 +21,9 @@ function displayForm(){
     if(styles.display === "none"){
         addBookForm.classList.remove("hidden-book-form")
         mainElement.classList.add("blur-style")
-        titleInput.value = "";
-        authorInput.value = "";
-        pagesInput.value = "";
+        titleInput.value = null;
+        authorInput.value = null;
+        pagesInput.value =null;
         readInput.checked = false;
     }else{
         addBookForm.classList.add("hidden-book-form")
@@ -118,4 +118,42 @@ let removeBook = (e) => {
     }
 }
 
-addBookForm.addEventListener("submit",addBookToLibrary)
+
+
+// form validation 
+
+const form = document.querySelector('form');
+
+const titleError = document.querySelector('#title + span.error');
+
+titleInput.addEventListener('input',function(){
+    if(titleInput.validity.valid){
+        titleError.textContent='';
+        titleError.className = 'error'
+    }else{
+        showError()
+    }
+})
+console.log(form)
+form.addEventListener('submit',function(e){
+    console.log(titleInput.validity.valid)
+    
+    if(!titleInput.validity.valid){
+        showError()
+        e.preventDefault()
+        console.log("sent")
+    }else{
+        displayForm(e)
+        addBookToLibrary(e)
+    }
+})
+
+
+function showError(){
+    if(titleInput.validity.valueMissing){
+        titleError.textContent = 'You need to enter a Book Title';
+    }else if(titleInput.validity.typeMismatch){
+        titleError.textContent = 'Title should be plain text'
+    }
+    titleError.className = 'error active'
+}

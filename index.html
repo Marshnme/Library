@@ -13,7 +13,7 @@
             <button class="new-book">New Book</button>
         </header>
         <section>
-            <form action="#" method="get" class="hidden-book-form add-book-form" >
+            <form novalidate action="#" method="get" class="hidden-book-form add-book-form" >
             <div class="input">
                 <div class="title-x">
                     <div class="title">
@@ -27,17 +27,19 @@
                 </div>
                 
                 <input type="text" name="title" id="title" placeholder="Title of Book" required>
+                <span class="error" aria-live="polite"></span>
                 <label for="author" class="underline">Author</label>
                 <input type="text" name="author" id="author" placeholder="Author of Book" required>
+                <span class="error" aria-live="polite"></span>
                 <label for="pages" class="underline">Pages</label>
                 <input type="number" name="pages" id="pages" placeholder="# of pages">
-                
+                <span class="error" aria-live="polite"></span>
                 <div class="read-check">
                     <label for="read">I've read this book</label>
                     <input type="checkbox" name="read" id="read">  
                 </div>
                 
-                <button type="submit" class="add-book-button">Add Book</button>
+                <button class="add-book-button">Add Book</button>
             </div>
         </form>
         </section>
