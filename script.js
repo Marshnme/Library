@@ -125,6 +125,7 @@ let removeBook = (e) => {
 const form = document.querySelector('form');
 
 const titleError = document.querySelector('#title + span.error');
+const authorError = document.querySelector('#author + span.error');
 
 titleInput.addEventListener('input',function(){
     if(titleInput.validity.valid){
@@ -134,13 +135,22 @@ titleInput.addEventListener('input',function(){
         showError()
     }
 })
+
+authorInput.addEventListener('input',function(){
+    if(authorInput.validity.valid){
+        authorError.textContent='';
+        authorError.className = 'error'
+    }else{
+        showError()
+    }
+})
 console.log(form)
 form.addEventListener('submit',function(e){
     console.log(titleInput.validity.valid)
-    
-    if(!titleInput.validity.valid){
+    e.preventDefault()
+    if(!titleInput.validity.valid || !authorInput.validity.valid){
         showError()
-        e.preventDefault()
+        
         console.log("sent")
     }else{
         displayForm(e)
@@ -152,8 +162,18 @@ form.addEventListener('submit',function(e){
 function showError(){
     if(titleInput.validity.valueMissing){
         titleError.textContent = 'You need to enter a Book Title';
+        titleError.className = 'error active'
     }else if(titleInput.validity.typeMismatch){
         titleError.textContent = 'Title should be plain text'
+        titleError.className = 'error active'
     }
-    titleError.className = 'error active'
+
+    if(authorInput.validity.valueMissing){
+        authorError.textContent = 'You need to enter a Book author';
+        authorError.className = 'error active'
+    }else if(authorInput.validity.typeMismatch){
+        authorError.textContent = 'author should be plain text'
+        authorError.className = 'error active'
+    }
+    
 }
